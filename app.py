@@ -1,6 +1,8 @@
 import pymysql
 from flask import Flask, render_template, request, redirect
+
 app = Flask(__name__)
+app.secret_key = "myLittleSodaPop67"
 
 def create_connection():
     return pymysql.connect(
