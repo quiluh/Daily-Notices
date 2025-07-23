@@ -16,6 +16,10 @@ def create_connection():
 def Index():
     pass
 
+@app.route("/login")
+def LogIn():
+    pass
+
 @app.route("/add")
 def Add():
     pass
