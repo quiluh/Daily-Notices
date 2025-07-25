@@ -18,9 +18,13 @@ def create_connection():
 def Index():
     pass
 
-@app.route("/login")
+@app.route("/login",methods=["GET","POST"])
 def LogIn():
-    pass
+    if request.method == "POST":
+        # LOG IN
+        pass
+    elif request.method == "GET":
+        return render_template("login.html")
 
 @app.route("/add")
 def Add():
