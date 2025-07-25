@@ -1,5 +1,5 @@
 import pymysql
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
 app.secret_key = "myLittleSodaPop67"
@@ -21,8 +21,19 @@ def Index():
 @app.route("/login",methods=["GET","POST"])
 def LogIn():
     if request.method == "POST":
-        # LOG IN
-        pass
+        username = request.form["username"]
+        password = request.form["password"]
+
+        with create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * from teachers where username=%s",(username,))
+                user = cursor.fetchone()
+        
+        if user and user["password"] == password:
+            session["user"] = user["username"]
+            return redirect("/")
+        else:
+            pass # CODE THIS LATER
     elif request.method == "GET":
         return render_template("login.html")
 
