@@ -21,14 +21,18 @@ def Index():
 @app.route("/login",methods=["GET","POST"])
 def LogIn():
     if request.method == "POST":
+        # GRAB INPUTTED USERNAME AND PASSWORD
         username = request.form["username"]
         password = request.form["password"]
 
+        # ESTABLISH CONNECTION WITH DATABASE
         with create_connection() as connection:
             with connection.cursor() as cursor:
+                # FIND THE USER IN THE DATABASE -- SHOULD ONLY RETURN ONE USER
                 cursor.execute("SELECT * from teachers where username=%s",(username,))
                 user = cursor.fetchone()
         
+        # CHECK IF USER EXISTS AND PASSWORD IS VALID, SET SESSION USER TO THE VALID USERNAME
         if user and user["password"] == password:
             session["user"] = user["username"]
             return redirect("/")
