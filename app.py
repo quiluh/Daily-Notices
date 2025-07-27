@@ -10,7 +10,7 @@ def create_connection():
         port=3306,
         user="root",
         password="Abcdefg123!",
-        database="daiy_notices",
+        database="daily_notices",
         cursorclass=pymysql.cursors.DictCursor
     )
 
