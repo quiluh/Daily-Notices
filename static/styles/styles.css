@@ -22,13 +22,11 @@ nav {
     top: 0;
     background-color: var(--primary);
     padding: 2%;
+    position: sticky;
+    z-index: 1;
 }
 .navItems {
     font-size: calc(1vh + 1.5vw);
-}
-.navItems button {
-    color: var(--accent);
-    background-color: var(--complimentaryPrimary);
 }
 
 p, h1, h2, h3 {
