@@ -34,7 +34,12 @@ nav {
     padding: 2.2%;
     margin: 1.2%;
     background-color: var(--complimentaryPrimary);
-
+    border-radius: 0.3rem;
+    filter: brightness(100%);
+    transition-duration: 300ms;
+}
+.navItems a:hover {
+    filter: brightness(130%);
 }
 
 p, h1, h2, h3 {
