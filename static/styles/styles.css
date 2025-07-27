@@ -5,6 +5,12 @@ body {
     box-sizing: border-box;
     line-height: 1.3;
 }
+
 * {
     box-sizing: inherit;
+}
+
+nav {
+    top: 0;
+    background-color: yellow;
 }
