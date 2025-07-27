@@ -55,11 +55,11 @@ def Register():
                 cursor.execute("SELECT * from teachers where username=%s",(username,))
                 user = cursor.fetchone()
                 if user is None:
-                    pass # CODE THIS LATER
-                else:
                     cursor.execute("INSERT INTO teachers (name,code,username,password) VALUES (%s,%s,%s,%s)",(name,code,username,password)) 
                     connection.commit()
-                    return redirect("/")       
+                    return redirect("/")  
+                else:
+                    pass # CODE THIS LATER
         
     elif request.method == "GET":
         return render_template("register.html")
@@ -76,4 +76,4 @@ def Delete():
 def Edit():
     pass
 
-app.run(debug=True)
+app.run()
