@@ -31,7 +31,7 @@ nav {
 }
 .navItems a {
     font-size: calc(1vh + 1.5vw);
-    padding: 1.2%;
+    padding: 2.2%;
     margin: 1.2%;
     background-color: var(--complimentaryPrimary);
 
