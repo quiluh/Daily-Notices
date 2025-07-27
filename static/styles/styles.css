@@ -29,11 +29,14 @@ p, h1, h2, h3 {
 }
 
 .row {
+    display: flex;
     flex-direction: row;
 }
 .rowReverse {
+    display: flex;
     flex-direction: row-reverse;
 }
 .column {
+    display: flex;
     flex-direction: column;
 }
