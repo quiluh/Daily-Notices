@@ -26,6 +26,10 @@ nav {
 .navItems {
     font-size: calc(1vh + 1.5vw);
 }
+.navItems button {
+    color: var(--accent);
+    background-color: var(--complimentaryPrimary);
+}
 
 p, h1, h2, h3 {
     word-wrap: break-word;
