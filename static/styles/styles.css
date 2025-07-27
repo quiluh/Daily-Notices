@@ -1,6 +1,7 @@
 :root {
     --background: #d0c7dc;
-    --primaryBackground: #9f9ae7;
+    --primary: #9f9ae7;
+    --complimentaryPrimary: #E2E79A;
     --accent: #3b2978;
 }
 
@@ -19,7 +20,7 @@ body {
 
 nav {
     top: 0;
-    background-color: var(--primaryBackground);
+    background-color: var(--primary);
 }
 
 p, h1, h2, h3 {
