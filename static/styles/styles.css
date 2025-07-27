@@ -21,6 +21,10 @@ body {
 nav {
     top: 0;
     background-color: var(--primary);
+    padding: 2%;
+}
+.navItems {
+    font-size: calc(1vh + 1.5vw);
 }
 
 p, h1, h2, h3 {
