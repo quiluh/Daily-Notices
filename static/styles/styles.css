@@ -26,7 +26,15 @@ nav {
     z-index: 1;
 }
 .navItems {
+    width: 50%;
+    background-color: black;
+}
+.navItems a {
     font-size: calc(1vh + 1.5vw);
+    padding: 1.2%;
+    margin: 1.2%;
+    background-color: var(--complimentaryPrimary);
+
 }
 
 p, h1, h2, h3 {
