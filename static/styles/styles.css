@@ -31,6 +31,9 @@ p, h1, h2, h3 {
 .row {
     flex-direction: row;
 }
+.rowReverse {
+    flex-direction: row-reverse;
+}
 .column {
     flex-direction: column;
 }
