@@ -92,6 +92,8 @@ def Edit():
                       cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(currentDate,currentDate))
                       notices = cursor.fetchall()
             
+            return render_template("edit.html",notices=notices)
+            
         elif request.method == "POST":
             pass
     else:
