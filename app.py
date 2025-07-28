@@ -44,6 +44,7 @@ def LogIn():
 @app.route("/register",methods=["GET","POST"]) # STORE USERNAME APPENDED TO PASSWORD FOR EXTRA SECURITY
 def Register():
     if request.method == "POST":
+        # GRAB INPUTTED FIELDS
         name = request.form["name"]
         code = request.form["code"]
         username = request.form["username"]
