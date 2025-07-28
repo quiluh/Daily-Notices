@@ -41,6 +41,11 @@ def LogIn():
     elif request.method == "GET":
         return render_template("login.html")
     
+@app.route("/logout")
+def LogOut():
+    session.pop("user", None)
+    return redirect("/login")
+    
 @app.route("/register",methods=["GET","POST"]) # STORE USERNAME APPENDED TO PASSWORD FOR EXTRA SECURITY
 def Register():
     if request.method == "POST":
@@ -75,6 +80,9 @@ def Delete():
 
 @app.route("/edit")
 def Edit():
-    pass
+    if "user" in session:
+        pass
+    else:
+        pass # CODE THIS LATER
 
 app.run()
