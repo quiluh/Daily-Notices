@@ -78,10 +78,13 @@ def Add():
 def Delete():
     pass
 
-@app.route("/edit")
+@app.route("/edit",methods=["GET","POST"])
 def Edit():
     if "user" in session:
-        pass
+        if request.method == "GET":
+            pass
+        elif request.method == "POST":
+            pass
     else:
         pass # CODE THIS LATER
 
