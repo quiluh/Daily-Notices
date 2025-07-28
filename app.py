@@ -82,10 +82,16 @@ def Delete():
 @app.route("/edit",methods=["GET","POST"])
 def Edit():
     if "user" in session:
-            currentDate = datetime.datetime.now()
-            dateString = f"{currentDate.year}-{currentDate.month}-{currentDate.day}"
+        # GET CURRENT DATE
+        currentDate = datetime.datetime.now()
+
         if request.method == "GET":
-            pass
+            # GET ALL NOTICES RELEVANT TO THE DATE
+            with create_connection() as connection:
+                 with connection.cursor() as cursor:
+                      cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(currentDate,currentDate))
+                      notices = cursor.fetchall()
+            
         elif request.method == "POST":
             pass
     else:
