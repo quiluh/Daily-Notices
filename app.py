@@ -1,4 +1,5 @@
 import pymysql
+import datetime
 from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
@@ -81,6 +82,8 @@ def Delete():
 @app.route("/edit",methods=["GET","POST"])
 def Edit():
     if "user" in session:
+            currentDate = datetime.datetime.now()
+            dateString = f"{currentDate.year}-{currentDate.month}-{currentDate.day}"
         if request.method == "GET":
             pass
         elif request.method == "POST":
