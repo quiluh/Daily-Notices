@@ -111,10 +111,13 @@ def Edit():
             return render_template("edit.html",notices=notices)
             
         elif request.method == "POST":
+            # LOOP THROUGH ALL FIELDS IN FORM
             for field in request.form:
                 if field.startswith("name_"):
+                    # GET ID
                     noticeID = field.split("_")[1]
 
+                    # UPDATE CORRESPONDING ROW
                     with create_connection() as connection:
                         with connection.cursor() as cursor:
                             cursor.execute(
