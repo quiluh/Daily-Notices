@@ -15,6 +15,12 @@ def create_connection():
         cursorclass=pymysql.cursors.DictCursor
     )
 
+@app.before_request
+def clearFirstLaunch():
+    if not session.get("initialized"):
+        session.clear()
+        session["initialized"] = True
+
 @app.route("/")
 def Index():
     return render_template("index.html")
@@ -130,5 +136,4 @@ def Edit():
         pass # CODE THIS LATER
 
 if __name__ == "__main__":
-    session.clear()
     app.run()
