@@ -50,19 +50,17 @@ def LogOut():
 @app.route("/register",methods=["GET","POST"]) # STORE USERNAME APPENDED TO PASSWORD FOR EXTRA SECURITY
 def Register():
     if request.method == "POST":
-        # GRAB INPUTTED FIELDS
-        name = request.form["name"]
-        code = request.form["code"]
-        username = request.form["username"]
-        password = request.form["password"]
 
         with create_connection() as connection:
             with connection.cursor() as cursor:
                 # CHECK IF USERNAME ALREADY EXISTS
-                cursor.execute("SELECT * from teachers where username=%s",(username,))
+                cursor.execute("SELECT * from teachers where username=%s",(request.form["username"],))
                 user = cursor.fetchone()
                 if user is None:
-                    cursor.execute("INSERT INTO teachers (name,code,username,password) VALUES (%s,%s,%s,%s)",(name,code,username,password)) 
+                    cursor.execute(
+                        "INSERT INTO teachers (name,code,username,password) VALUES (%s,%s,%s,%s)",
+                        [request.form[i] for i in ("name","code","username","password")]
+                    ) 
                     connection.commit()
                     return redirect("/")  
                 else:
