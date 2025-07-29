@@ -13,6 +13,16 @@
             <label for="name">Name:</label>
             <input id="name" name="name" value="{{ notice['name'] }}">
 
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="Sports" {% if notice['category'] == 'Sports' %}selected{% endif %}>Sports</option>
+                <option value="Culture" {% if notice['category'] == 'Culture' %}selected{% endif %}>Culture</option>
+                <option value="Academics" {% if notice['category'] == 'Academics' %}selected{% endif %}>Academics</option>
+                <option value="Music" {% if notice['category'] == 'Music' %}selected{% endif %}>Music</option>
+                <option value="Leadership" {% if notice['category'] == 'Leadership' %}selected{% endif %}>Leadership</option>
+                <option value="General" {% if notice['category'] == 'General' %}selected{% endif %}>General</option>
+            </select>
+
             <label for="info">Info:</label>
             <textarea name="info" id="info" value="{{ notice['information'] }}"></textarea>
         {% endfor %}
