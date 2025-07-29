@@ -82,14 +82,14 @@ def Add():
         elif request.method == "POST":
             with create_connection() as connection:
                 with connection.cursor() as cursor:
-                    # GET USER CODE
-                    cursor.execute("SELECT code FROM teachers where username=%s",(session["user"],))
-                    userCode = cursor.fetchone()["code"]
+                    # GET USER ID
+                    cursor.execute("SELECT id FROM teachers where username=%s",(session["user"],))
+                    userID = cursor.fetchone()["id"]
 
                     # ADD NEW DAILY NOTICE
                     cursor.execute(
                         "INSERT INTO dailynotices (name,category,information,startDate,endDate,teacherInChargeID) VALUES (%s,%s,%s,%s,%s,%s)",
-                        [request.form[i] for i in ("name","category","info","startDate","endDate")]+[userCode]
+                        [request.form[i] for i in ("name","category","info","startDate","endDate")]+[userID]
                     )
                     connection.commit()
 
