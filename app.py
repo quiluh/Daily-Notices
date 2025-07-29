@@ -71,9 +71,28 @@ def Register():
     elif request.method == "GET":
         return render_template("register.html")
     
-@app.route("/add")
+@app.route("/add",methods=["GET","POST"])
 def Add():
-    pass
+    if "user" in session:
+        if request.method == "GET":
+            return render_template("add.html")
+        elif request.method == "POST":
+
+            with create_connection() as connection:
+                with connection.cursor() as cursor:
+                    # GET USER CODE
+                    cursor.execute("SELECT code FROM teachers where username=%s",(session["user"],))
+                    userCode = cursor.fetchone()
+
+                    # ADD NEW DAILY NOTICE
+                    cursor.execute(
+                        "INSERT INTO dailynotices (name,category,information,startDate,endDate) VALUES (%s,%s,%s,%s,%s,%s)",
+                        [request.form[i] for i in ("name","category","information","startDate","endDate")]+[userCode]
+                    )
+
+                    return redirect("/")
+    else:
+        pass # CODE THIS LATER
 
 @app.route("/delete")
 def Delete():
