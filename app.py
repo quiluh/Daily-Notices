@@ -74,7 +74,6 @@ def Add():
         if request.method == "GET":
             return render_template("add.html")
         elif request.method == "POST":
-
             with create_connection() as connection:
                 with connection.cursor() as cursor:
                     # GET USER CODE
@@ -86,6 +85,7 @@ def Add():
                         "INSERT INTO dailynotices (name,category,information,startDate,endDate) VALUES (%s,%s,%s,%s,%s,%s)",
                         [request.form[i] for i in ("name","category","information","startDate","endDate")]+[userCode]
                     )
+                    connection.commit()
 
                     return redirect("/")
     else:
