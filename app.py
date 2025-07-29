@@ -88,7 +88,7 @@ def Add():
 
                     # ADD NEW DAILY NOTICE
                     cursor.execute(
-                        "INSERT INTO dailynotices (name,category,information,startDate,endDate) VALUES (%s,%s,%s,%s,%s,%s)",
+                        "INSERT INTO dailynotices (name,category,information,startDate,endDate,teacherInChargeID) VALUES (%s,%s,%s,%s,%s,%s)",
                         [request.form[i] for i in ("name","category","information","startDate","endDate")]+[userCode]
                     )
                     connection.commit()
