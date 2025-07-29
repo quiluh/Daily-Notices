@@ -50,7 +50,6 @@ def LogOut():
 @app.route("/register",methods=["GET","POST"]) # STORE USERNAME APPENDED TO PASSWORD FOR EXTRA SECURITY
 def Register():
     if request.method == "POST":
-
         with create_connection() as connection:
             with connection.cursor() as cursor:
                 # CHECK IF USERNAME ALREADY EXISTS
@@ -112,7 +111,18 @@ def Edit():
             return render_template("edit.html",notices=notices)
             
         elif request.method == "POST":
-            pass
+            for field in request.form:
+                if field.startswith("name_"):
+                    noticeID = field.split("_")[1]
+
+                    with create_connection() as connection:
+                        with connection.cursor() as cursor:
+                            cursor.execute(
+                                "UPDATE dailynotices SET name=%s, category=%s, information=%s WHERE id=%s",
+                                [request.form[f"{i}_{noticeID}"] for i in ("name","category","information")]+[noticeID]
+                            )
+                            connection.commit()
+            return redirect("/")
     else:
         pass # CODE THIS LATER
 
