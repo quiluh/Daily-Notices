@@ -78,7 +78,7 @@ def Add():
                 with connection.cursor() as cursor:
                     # GET USER CODE
                     cursor.execute("SELECT code FROM teachers where username=%s",(session["user"],))
-                    userCode = cursor.fetchone()
+                    userCode = cursor.fetchone()["code"]
 
                     # ADD NEW DAILY NOTICE
                     cursor.execute(
