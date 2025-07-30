@@ -146,7 +146,7 @@ def Edit():
                       cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(currentDate,currentDate))
                       notices = cursor.fetchall()
             
-            return render_template("edit.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)])
+            return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)])
             
         elif request.method == "POST":
             # LOOP THROUGH ALL FIELDS IN FORM
