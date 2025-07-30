@@ -23,10 +23,32 @@ def clearFirstLaunch():
 
 @app.route("/")
 def Index():
-    return render_template("index.html")
+    # GET CURRENT DATE
+    currentDate = datetime.datetime.now()
+    
+    # GET ALL NOTICES RELEVANT TO THE DATE
+    with create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    """SELECT 
+                        dailynotices.id,
+                        dailynotices.name,
+                        dailynotices.category,
+                        dailynotices.information,
+                        dailynotices.startDate,
+                        dailynotices.endDate,
+                        FROM dailynotices JOIN teachers ON dailynotices.teacherInChargeID = teachers.id
+                        WHERE startDate <= %s AND endDate >= %s
+                    """,
+                    (currentDate,currentDate)
+                )
+                notices = cursor.fetchall()
+    
+    return render_template("index.html",notices=notices)
 
 @app.route("/login",methods=["GET","POST"])
 def LogIn():
+
     if request.method == "POST":
         # GRAB INPUTTED USERNAME AND PASSWORD
         username = request.form["username"]
