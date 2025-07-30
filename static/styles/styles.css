@@ -120,6 +120,7 @@ textarea {
     border: none;
     border-radius: 0.2rem;
     font-size: calc(0.8vh + 0.9vw);
+    width: 75%;
     transition-duration: 0.2s;
     resize: none;
     height: fit-content;
@@ -133,7 +134,7 @@ select {
 }
 button,select {
     font-size: calc(0.9vh + 1.1vw);
-    padding: 2%;
+    padding: 2.5%;
     height: fit-content;
     align-self: center;
     text-align: center;
