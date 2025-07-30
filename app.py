@@ -99,12 +99,15 @@ def Add():
 
 @app.route("/delete/<int:noticeID>")
 def Delete(noticeID:int):
-    # DELETE DAILY NOTICE FROM PASSED ID
-    with create_connection() as connection:
-        with connection.cursor() as cursor:
-            cursor.execute("DELETE FROM dailynotices WHERE id=%s",(noticeID,))
-            connection.commit()
-    return redirect("/")
+    if "user" in session:
+        # DELETE DAILY NOTICE FROM PASSED ID
+        with create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute("DELETE FROM dailynotices WHERE id=%s",(noticeID,))
+                connection.commit()
+        return redirect("/")
+    else:
+        pass # CODE THIS LATER
 
 @app.route("/edit",methods=["GET","POST"])
 def Edit():
