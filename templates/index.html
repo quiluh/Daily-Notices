@@ -7,11 +7,17 @@
     <title>Daily Notices</title>
 </head>
 <body>
-    {% for notice in notices %}
-        <h1>{{ notice["name"] }}</h1>
-        <h1>{{ notice["category"] }}</h1>
-        <h1>{{ notice["information"] }}</h1>
-        <h1>{{ notice["teacherCode"] }}</h1>
+    {% for row in notices %}
+        <div class="row justifyContentEvenly">
+            {% for notice in row %}
+                <div class="noticeContainer">
+                    <h1>{{ notice["name"] }}</h1>
+                    <h2>{{ notice["category"] }}</h2>
+                    <p>{{ notice["information"] }}</p>
+                    <h3>{{ notice["teacherCode"] }}</h3>
+                </div>
+            {% endfor %}
+        </div>
     {% endfor %}
 </body>
 </html>
