@@ -9,7 +9,6 @@
 <body>
     <form method="post">
         {% for notice in notices %}
-            <form method="post">
                 <input type="hidden" name="id_{{ notice['id'] }}" value="{{ notice['id'] }}">
         
                 <label for="name_{{ notice['id'] }}">Name:</label>
@@ -27,11 +26,11 @@
         
                 <label for="info_{{ notice['id'] }}">Info:</label>
                 <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
-                <input type="submit" value="Update">
-            </form>
             <form action="{{ url_for('Delete', noticeID=notice['id']) }}">
                 <button type="submit">Delete</button>
             </form>
         {% endfor %}
+        <input type="submit" value="Update">
+    </form>
 </body>
 </html>
