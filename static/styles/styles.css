@@ -39,6 +39,7 @@ nav {
     border-radius: 0.3rem;
     filter: brightness(100%);
     transition-duration: 300ms;
+    cursor: pointer;
 }
 .navItems a:hover {
     filter: brightness(130%);
@@ -136,6 +137,7 @@ button,select {
     border-radius: 0.3rem;
     filter: brightness(100%);
     transition-duration: 300ms;
+    cursor: pointer;
 }
 button:hover,select:hover {
     filter: brightness(130%);
