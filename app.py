@@ -121,7 +121,7 @@ def Add():
     else:
         pass # CODE THIS LATER
 
-@app.route("/delete/<int:noticeID>",methods=["POST"])
+@app.route("/delete",methods=["POST"])
 def Delete(noticeID:int):
     if "user" in session:
         # DELETE DAILY NOTICE FROM PASSED ID
