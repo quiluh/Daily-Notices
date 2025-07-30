@@ -97,9 +97,13 @@ def Add():
     else:
         pass # CODE THIS LATER
 
-@app.route("/delete")
-def Delete():
-    pass
+@app.route("/delete/<int:noticeID>")
+def Delete(noticeID:int):
+    with create_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM dailynotices WHERE id=%s",(noticeID,))
+            connection.commit()
+    return redirect("/")
 
 @app.route("/edit",methods=["GET","POST"])
 def Edit():
