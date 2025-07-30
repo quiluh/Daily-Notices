@@ -106,6 +106,7 @@ input[type="text"] {
     border: none;
     border-radius: 0.2rem;
     transition-duration: 0.2s;
+    font-size: calc(1.5vh + 1.8vw);
 }
 input[type="text"]:focus {
     outline: none;
@@ -118,6 +119,7 @@ textarea {
     background-color: var(--lightPrimary);
     border: none;
     border-radius: 0.2rem;
+    font-size: calc(0.8vh + 0.9vw);
     transition-duration: 0.2s;
     resize: none;
     height: fit-content;
@@ -125,6 +127,9 @@ textarea {
 textarea:focus {
     outline: none;
     filter: brightness(110%);
+}
+select {
+    font-size: calc(1.2vh + 1.5vw);
 }
 button,select {
     font-size: calc(0.9vh + 1.1vw);
@@ -142,4 +147,10 @@ button,select {
 }
 button:hover,select:hover {
     filter: brightness(120%);
+}
+.centerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
