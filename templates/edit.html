@@ -14,10 +14,8 @@
                     <form method="post">
                         <input type="hidden" name="id_{{ notice['id'] }}" value="{{ notice['id'] }}">
     
-                        <label for="name_{{ notice['id'] }}">Name:</label>
                         <input type="text" id="name_{{ notice['id'] }}" name="name_{{ notice['id'] }}" value="{{ notice['name'] }}">
     
-                        <label for="category_{{ notice['id'] }}">Category:</label>
                         <select name="category_{{ notice['id'] }}" id="category_{{ notice['id'] }}">
                             <option value="Sports" {% if notice['category'] == 'Sports' %}selected{% endif %}>Sports</option>
                             <option value="Culture" {% if notice['category'] == 'Culture' %}selected{% endif %}>Culture</option>
@@ -26,8 +24,7 @@
                             <option value="Leadership" {% if notice['category'] == 'Leadership' %}selected{% endif %}>Leadership</option>
                             <option value="General" {% if notice['category'] == 'General' %}selected{% endif %}>General</option>
                         </select>
-    
-                        <label for="info_{{ notice['id'] }}">Info:</label>
+
                         <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
                         <button type="submit">Submit</button>
                     </form>
