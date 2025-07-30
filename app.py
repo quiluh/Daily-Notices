@@ -29,6 +29,7 @@ def Index():
     # GET ALL NOTICES RELEVANT TO THE DATE
     with create_connection() as connection:
             with connection.cursor() as cursor:
+                # JOIN DAILY NOTICES TABLE AND TEACHERS TABLE USING FOREIGN KEY
                 cursor.execute(
                     """SELECT 
                         dailynotices.id,
