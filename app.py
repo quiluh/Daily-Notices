@@ -28,25 +28,25 @@ def Index():
     
     # GET ALL NOTICES RELEVANT TO THE DATE
     with create_connection() as connection:
-            with connection.cursor() as cursor:
-                # JOIN DAILY NOTICES TABLE AND TEACHERS TABLE USING FOREIGN KEY
-                cursor.execute(
-                    """SELECT 
-                        dailynotices.id,
-                        dailynotices.name,
-                        dailynotices.category,
-                        dailynotices.information,
-                        dailynotices.startDate,
-                        dailynotices.endDate,
-                        teachers.code AS teacherCode
-                        FROM dailynotices JOIN teachers ON dailynotices.teacherInChargeID = teachers.id
-                        WHERE startDate <= %s AND endDate >= %s
-                    """,
-                    (currentDate,currentDate)
-                )
-                notices = cursor.fetchall()
+        with connection.cursor() as cursor:
+            # JOIN DAILY NOTICES TABLE AND TEACHERS TABLE USING FOREIGN KEY
+            cursor.execute(
+                """SELECT 
+                    dailynotices.id,
+                    dailynotices.name,
+                    dailynotices.category,
+                    dailynotices.information,
+                    dailynotices.startDate,
+                    dailynotices.endDate,
+                    teachers.code AS teacherCode
+                    FROM dailynotices JOIN teachers ON dailynotices.teacherInChargeID = teachers.id
+                    WHERE startDate <= %s AND endDate >= %s
+                """,
+                (currentDate,currentDate)
+            )
+            notices = cursor.fetchall()
     
-    return render_template("index.html",notices=notices)
+    return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)])
 
 @app.route("/login",methods=["GET","POST"])
 def LogIn():
