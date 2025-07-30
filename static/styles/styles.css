@@ -49,13 +49,20 @@ p, h1, h2, h3 {
     white-space: normal;
 }
 h1 {
-
+    font-size: calc(1.5vh + 1.8vw);
+}
+nav h1 {
+    font-size: calc(2vh + 2.1vw);
+    margin: 2%;
 }
 h2 {
-
+    font-size: calc(1.2vh + 1.5vw);
 }
 h3 {
-
+    font-size: calc(0.9vh + 1.1vw);
+}
+p {
+    font-size: calc(0.8vh + 0.9vw);
 }
 .w50 {
     width: 50%;
