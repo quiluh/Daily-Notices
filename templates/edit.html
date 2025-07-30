@@ -26,8 +26,11 @@
     
             <label for="info_{{ notice['id'] }}">Info:</label>
             <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
-    
-            <hr>
+            
+            <form action="{{ url_for('Delete', noticeID=notice['id']) }}">
+                <button type="submit">Delete</button>
+            </form>
+
         {% endfor %}
         <input type="submit" value="Update">
     </form>    

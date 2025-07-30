@@ -121,7 +121,7 @@ def Add():
     else:
         pass # CODE THIS LATER
 
-@app.route("/delete/<int:noticeID>")
+@app.route("/delete/<int:noticeID>",methods=["POST"])
 def Delete(noticeID:int):
     if "user" in session:
         # DELETE DAILY NOTICE FROM PASSED ID
@@ -129,7 +129,7 @@ def Delete(noticeID:int):
             with connection.cursor() as cursor:
                 cursor.execute("DELETE FROM dailynotices WHERE id=%s",(noticeID,))
                 connection.commit()
-        return redirect("/")
+        return redirect("/edit")
     else:
         pass # CODE THIS LATER
 
