@@ -30,8 +30,10 @@ nav {
 }
 .navItems a {
     font-size: calc(1vh + 1.5vw);
-    padding: 2.2%;
-    margin: 1.2%;
+    padding: 5%;
+    height: fit-content;
+    align-self: center;
+    margin: 4.2%;
     background-color: var(--complimentaryPrimary);
     border-radius: 0.3rem;
     filter: brightness(100%);
@@ -54,6 +56,9 @@ h2 {
 }
 h3 {
 
+}
+.w50 {
+    width: 50%;
 }
 .row {
     display: flex;
