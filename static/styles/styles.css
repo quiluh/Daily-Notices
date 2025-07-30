@@ -132,13 +132,27 @@ textarea:focus {
 select {
     font-size: calc(1.2vh + 1.5vw);
 }
-button,select {
+select {
     font-size: calc(0.9vh + 1.1vw);
     padding: 2.5%;
     height: fit-content;
     align-self: center;
     text-align: center;
     margin: 4.2%;
+    background-color: var(--lightPrimary);
+    border-radius: 0.3rem;
+    border: none;
+    filter: brightness(100%);
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+button {
+    font-size: calc(0.9vh + 1.1vw);
+    padding: 3.5%;
+    height: fit-content;
+    align-self: center;
+    text-align: center;
+    margin: 2.2%;
     background-color: var(--lightPrimary);
     border-radius: 0.3rem;
     border: none;
