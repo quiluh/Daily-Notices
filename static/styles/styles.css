@@ -27,7 +27,6 @@ nav {
 }
 .navItems {
     width: 50%;
-    background-color: black;
 }
 .navItems a {
     font-size: calc(1vh + 1.5vw);
@@ -62,4 +61,17 @@ p, h1, h2, h3 {
 }
 .textDecorationNone {
     text-decoration: none;
+}
+.noticeContainer {
+    background-color: var(--complimentaryPrimary);
+    width: fit-content;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 5.5%;
+    padding-left: 5.5%;
+    border-radius: 0.25rem;
+    margin: 3%;
+}
+.justifyContentEvenly {
+    justify-content: space-evenly;
 }
