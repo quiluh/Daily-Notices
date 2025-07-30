@@ -41,12 +41,20 @@ nav {
     filter: brightness(130%);
 }
 
-p, h1, h2, h3, h4 {
+p, h1, h2, h3 {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
 }
+h1 {
 
+}
+h2 {
+
+}
+h3 {
+
+}
 .row {
     display: flex;
     flex-direction: row;
@@ -71,6 +79,7 @@ p, h1, h2, h3, h4 {
     padding-left: 5.5%;
     border-radius: 0.25rem;
     margin: 3%;
+    text-align: center;
 }
 .justifyContentEvenly {
     justify-content: space-evenly;
