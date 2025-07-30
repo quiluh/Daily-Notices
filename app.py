@@ -99,6 +99,7 @@ def Add():
 
 @app.route("/delete/<int:noticeID>")
 def Delete(noticeID:int):
+    # DELETE DAILY NOTICE FROM PASSED ID
     with create_connection() as connection:
         with connection.cursor() as cursor:
             cursor.execute("DELETE FROM dailynotices WHERE id=%s",(noticeID,))
