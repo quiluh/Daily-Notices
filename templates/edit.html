@@ -15,7 +15,7 @@
                         <input type="hidden" name="id_{{ notice['id'] }}" value="{{ notice['id'] }}">
     
                         <label for="name_{{ notice['id'] }}">Name:</label>
-                        <input id="name_{{ notice['id'] }}" name="name_{{ notice['id'] }}" value="{{ notice['name'] }}">
+                        <input type="text" id="name_{{ notice['id'] }}" name="name_{{ notice['id'] }}" value="{{ notice['name'] }}">
     
                         <label for="category_{{ notice['id'] }}">Category:</label>
                         <select name="category_{{ notice['id'] }}" id="category_{{ notice['id'] }}">
@@ -29,7 +29,7 @@
     
                         <label for="info_{{ notice['id'] }}">Info:</label>
                         <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
-                        <input type="submit" value="Update">
+                        <button type="submit">Submit</button>
                     </form>
                     <form action="{{ url_for('Delete', noticeID=notice['id']) }}">
                         <button type="submit">Delete</button>

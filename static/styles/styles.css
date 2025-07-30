@@ -1,6 +1,7 @@
 :root {
     --background: #d0c7dc;
     --primary: #9f9ae7;
+    --lightPrimary: #c6c3f4;
     --complimentaryPrimary: #E2E79A;
     --accent: #3b2978;
 }
@@ -95,4 +96,47 @@ p {
 }
 .justifyContentEvenly {
     justify-content: space-evenly;
+}
+input[type="text"] {
+    padding: 3%;
+    margin: 3%;
+    text-align: center;
+    background-color: var(--lightPrimary);
+    border: none;
+    border-radius: 0.2rem;
+    transition-duration: 0.2s;
+}
+input[type="text"]:focus {
+    outline: none;
+    filter: brightness(110%);
+}
+textarea {
+    padding: 3%;
+    margin: 3%;
+    text-align: center;
+    background-color: var(--lightPrimary);
+    border: none;
+    border-radius: 0.2rem;
+    transition-duration: 0.2s;
+    resize: none;
+    height: fit-content;
+}
+textarea:focus {
+    outline: none;
+    filter: brightness(110%);
+}
+button,select {
+    font-size: calc(0.9vh + 1.1vw);
+    padding: 2%;
+    height: fit-content;
+    align-self: center;
+    text-align: center;
+    margin: 4.2%;
+    background-color: var(--lightPrimary);
+    border-radius: 0.3rem;
+    filter: brightness(100%);
+    transition-duration: 300ms;
+}
+button:hover,select:hover {
+    filter: brightness(130%);
 }
