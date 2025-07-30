@@ -38,6 +38,7 @@ def Index():
                         dailynotices.information,
                         dailynotices.startDate,
                         dailynotices.endDate,
+                        teachers.code AS teacherCode
                         FROM dailynotices JOIN teachers ON dailynotices.teacherInChargeID = teachers.id
                         WHERE startDate <= %s AND endDate >= %s
                     """,
