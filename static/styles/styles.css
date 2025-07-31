@@ -98,7 +98,7 @@ p {
 .justifyContentEvenly {
     justify-content: space-evenly;
 }
-input[type="text"] {
+.noticeContainer input[type="text"] {
     padding: 3%;
     margin: 3%;
     text-align: center;
@@ -108,11 +108,11 @@ input[type="text"] {
     transition-duration: 0.2s;
     font-size: calc(1.5vh + 1.8vw);
 }
-input[type="text"]:focus {
+.noticeContainer input[type="text"]:focus {
     outline: none;
     filter: brightness(110%);
 }
-textarea {
+.noticeContainer textarea {
     padding: 3%;
     margin: 3%;
     text-align: center;
@@ -125,14 +125,14 @@ textarea {
     resize: none;
     height: fit-content;
 }
-textarea:focus {
+.noticeContainer textarea:focus {
     outline: none;
     filter: brightness(110%);
 }
-select {
+.noticeContainer select {
     font-size: calc(1.2vh + 1.5vw);
 }
-select {
+.noticeContainer select {
     font-size: calc(0.9vh + 1.1vw);
     padding: 2.5%;
     height: fit-content;
@@ -146,7 +146,7 @@ select {
     transition-duration: 300ms;
     cursor: pointer;
 }
-button {
+.noticeContainer button {
     font-size: calc(0.9vh + 1.1vw);
     padding: 3.5%;
     height: fit-content;
@@ -160,7 +160,7 @@ button {
     transition-duration: 300ms;
     cursor: pointer;
 }
-button:hover,select:hover {
+.noticeContainer button:hover,select:hover {
     filter: brightness(120%);
 }
 .centerContent {
