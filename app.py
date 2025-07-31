@@ -159,8 +159,8 @@ def Edit():
                     with create_connection() as connection:
                         with connection.cursor() as cursor:
                             cursor.execute(
-                                "UPDATE dailynotices SET name=%s, category=%s, information=%s WHERE id=%s",
-                                [request.form[f"{i}_{noticeID}"] for i in ("name","category","info")]+[noticeID]
+                                "UPDATE dailynotices SET name=%s, category=%s, information=%s, startDate=%s, endDate=%s WHERE id=%s",
+                                [request.form[f"{i}_{noticeID}"] for i in ("name","category","info","startDate","endDate")]+[noticeID]
                             )
                             connection.commit()
             return redirect("/")
