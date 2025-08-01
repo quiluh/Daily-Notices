@@ -94,6 +94,11 @@ p {
     border-radius: 0.25rem;
     margin: 3%;
     text-align: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.noticeContainer:hover {
+    transform: scale(105%);
 }
 .justifyContentEvenly {
     justify-content: space-evenly;
