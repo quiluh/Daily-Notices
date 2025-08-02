@@ -7,29 +7,46 @@
     <title>Daily Notices | Add</title>
 </head>
 <body>
-    <form method="post">
-        <label for="name">Name:</label>
-        <input id="name" name="name" value="" autocomplete="off" maxlength="20">
+    <div class="noticeContainer">
+        <form method="post">
+            <div class="centerContent">
+                <label for="name">Name:</label>
+                <input id="name" name="name" value="" autocomplete="off" maxlength="20">
+            </div>
+    
+            <div class="centerContent">
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                    <option value="Sports">Sports</option>
+                    <option value="Culture">Culture</option>
+                    <option value="Academics">Academics</option>
+                    <option value="Music">Music</option>
+                    <option value="Leadership">Leadership</option>
+                    <option value="General">General</option>
+                </select>
+            </div>
 
-        <label for="category">Category:</label>
-        <select name="category" id="category">
-            <option value="Sports">Sports</option>
-            <option value="Culture">Culture</option>
-            <option value="Academics">Academics</option>
-            <option value="Music">Music</option>
-            <option value="Leadership">Leadership</option>
-            <option value="General">General</option>
-        </select>
-
-        <label for="info">Info:</label>
-        <textarea name="info" id="info" value="" maxlength="125"></textarea>
-
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" name="startDate">
-
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" name="endDate">
-        <input type="submit" value="Add">
-    </form>
+            <div class="centerContent">
+                <label for="info">Info:</label>
+                <textarea name="info" id="info" value="" maxlength="125"></textarea>
+            </div>    
+            
+            <div class="centerContent">
+                <div class="row">
+                    <div class="col">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" id="startDate" name="startDate">
+                    </div>
+                    <div class="col">
+                        <label for="endDate">End Date:</label>
+                        <input type="date" id="endDate" name="endDate">
+                    </div>
+                </div>
+            </div>
+            <div class="centerContent">
+                <input type="submit" value="Add">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
