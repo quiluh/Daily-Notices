@@ -7,11 +7,11 @@
     <title>Daily Notices | Add</title>
 </head>
 <body>
-    <div class="noticeContainer">
+    <div class="noticeContainer mxAuto">
         <form method="post">
             <div class="centerContent">
                 <label for="name">Name:</label>
-                <input id="name" name="name" value="" autocomplete="off" maxlength="20">
+                <input type="text" id="name" name="name" value="" autocomplete="off" maxlength="20">
             </div>
     
             <div class="centerContent">
@@ -32,7 +32,7 @@
             </div>    
             
             <div class="centerContent">
-                <div class="row">
+                <div class="row justifyContentEvenly">
                     <div class="col">
                         <label for="startDate">Start Date:</label>
                         <input type="date" id="startDate" name="startDate">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="centerContent">
-                <input type="submit" value="Add">
+                <button type="submit" value="Add">Add</button>
             </div>
         </form>
     </div>

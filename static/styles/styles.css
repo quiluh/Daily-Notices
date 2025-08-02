@@ -174,3 +174,7 @@ p {
     align-items: center;
     width: 100%;
 }
+.mxAuto {
+    margin-left: auto;
+    margin-right: auto;
+}
