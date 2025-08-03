@@ -22,11 +22,11 @@ def clearFirstLaunch():
         session["initialized"] = True
 
 @app.route("/")
-def Landing():
+def landing():
     return redirect("/index")
 
 @app.route("/index")
-def Index():
+def index():
     # GET CURRENT DATE
     currentDate = datetime.datetime.now()
     
@@ -53,7 +53,7 @@ def Index():
     return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)])
 
 @app.route("/login",methods=["GET","POST"])
-def LogIn():
+def login():
 
     if request.method == "POST":
         # GRAB INPUTTED USERNAME AND PASSWORD
@@ -77,12 +77,12 @@ def LogIn():
         return render_template("login.html")
     
 @app.route("/logout")
-def LogOut():
+def logout():
     session.pop("user", None)
     return redirect("/login")
     
 @app.route("/register",methods=["GET","POST"]) # STORE USERNAME APPENDED TO PASSWORD FOR EXTRA SECURITY
-def Register():
+def register():
     if request.method == "POST":
         with create_connection() as connection:
             with connection.cursor() as cursor:
@@ -103,7 +103,7 @@ def Register():
         return render_template("register.html")
     
 @app.route("/add",methods=["GET","POST"])
-def Add():
+def add():
     if "user" in session:
         if request.method == "GET":
             return render_template("add.html")
@@ -126,7 +126,7 @@ def Add():
         pass # CODE THIS LATER
 
 @app.route("/delete/<int:noticeID>",methods=["GET","POST"])
-def Delete(noticeID:int):
+def delete(noticeID:int):
     if "user" in session:
         # DELETE DAILY NOTICE FROM PASSED ID
         with create_connection() as connection:
@@ -138,7 +138,7 @@ def Delete(noticeID:int):
         pass # CODE THIS LATER
 
 @app.route("/edit",methods=["GET","POST"])
-def Edit():
+def edit():
     if "user" in session:
         # GET CURRENT DATE
         currentDate = datetime.datetime.now()
