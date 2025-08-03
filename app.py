@@ -22,6 +22,10 @@ def clearFirstLaunch():
         session["initialized"] = True
 
 @app.route("/")
+def Landing():
+    return redirect("/index")
+
+@app.route("/index")
 def Index():
     # GET CURRENT DATE
     currentDate = datetime.datetime.now()
