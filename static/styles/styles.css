@@ -195,6 +195,9 @@ p {
     justify-content: space-evenly;
     transform: translate(-50%, -50%);
 }
+.loginContainer label {
+    padding: 3%;
+}
 .loginContainer .row {
     gap: 2rem;
 }
