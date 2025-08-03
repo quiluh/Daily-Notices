@@ -189,6 +189,8 @@ p {
     text-align: center;
     font-size: calc(0.9vh + 1.1vw);
     background-color: var(--lightPrimary);
+    padding: 2.5%;
+    margin-top: 1.5%;
     border: none;
     border-radius: 0.25rem;
     transition-duration: 0.2s;
