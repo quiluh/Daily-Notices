@@ -109,7 +109,7 @@ p {
     text-align: center;
     background-color: var(--lightPrimary);
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 0.25rem;
     transition-duration: 0.2s;
     font-size: calc(1.5vh + 1.8vw);
 }
@@ -123,7 +123,7 @@ p {
     text-align: center;
     background-color: var(--lightPrimary);
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 0.25rem;
     font-size: calc(0.8vh + 0.9vw);
     width: 75%;
     transition-duration: 0.2s;
@@ -145,7 +145,7 @@ p {
     text-align: center;
     margin: 4.2%;
     background-color: var(--lightPrimary);
-    border-radius: 0.3rem;
+    border-radius: 0.25rem;
     border: none;
     filter: brightness(100%);
     transition-duration: 300ms;
@@ -159,7 +159,7 @@ p {
     text-align: center;
     margin: 2.2%;
     background-color: var(--lightPrimary);
-    border-radius: 0.3rem;
+    border-radius: 0.25rem;
     border: none;
     filter: brightness(100%);
     transition-duration: 300ms;
@@ -177,4 +177,40 @@ p {
 .mxAuto {
     margin-left: auto;
     margin-right: auto;
+}
+.loginContainer {
+    background-color: var(--complimentaryPrimary);
+    width: 75%;
+    margin-top: 5%;
+    border-radius: 0.25rem;
+    padding: 3%;
+}
+.loginContainer input[type="text"], .loginContainer input[type="password"] {
+    text-align: center;
+    font-size: calc(0.9vh + 1.1vw);
+    background-color: var(--lightPrimary);
+    border: none;
+    border-radius: 0.25rem;
+    transition-duration: 0.2s;
+}
+.loginContainer input[type="text"]:focus, .loginContainer input[type="password"]:focus {
+    outline: none;
+    filter: brightness(110%);
+}
+.loginContainer button {
+    font-size: calc(0.9vh + 1.1vw);
+    padding: 2.5%;
+    height: fit-content;
+    align-self: center;
+    text-align: center;
+    margin-top: 3%;
+    background-color: var(--lightPrimary);
+    border-radius: 0.25rem;
+    border: none;
+    filter: brightness(100%);
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+.loginContainer button:hover {
+    filter: brightness(120%);
 }

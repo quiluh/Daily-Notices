@@ -24,39 +24,30 @@
             </div>
         </div>
     </nav>
-    <div class="row justifyContentEvenly">
-        <div class="noticeContainer">
-            <h1>Name</h1>
-            <h2>Category</h2>
-            <p>Info</p>
-            <h3>Teacher Code</h3>
-        </div>
-        <div class="noticeContainer">
-            <h1>Name</h1>
-            <h2>Category</h2>
-            <p>Info</p>
-            <h3>Teacher Code</h3>
-        </div>
-        <div class="noticeContainer">
-            <h1>Name</h1>
-            <h2>Category</h2>
-            <p>Info</p>
-            <h3>Teacher Code</h3>
-        </div>
-    </div>
-    <div class="row justifyContentEvenly">
-        <div class="noticeContainer">
-            <h1>Name</h1>
-            <h2>Category</h2>
-            <p>Info</p>
-            <h3>Teacher Code</h3>
-        </div>
-        <div class="noticeContainer">
-            <h1>Name</h1>
-            <h2>Category</h2>
-            <p>Info</p>
-            <h3>Teacher Code</h3>
-        </div>
+    <div class="loginContainer mxAuto">
+        <form method="post">
+            <div class="row justifyContentEvenly">
+                <div class="col justifyContentEvenly">
+                    <div class="row justifyContentEvenly">
+                        <label for="username">Username:</label>
+                    </div>
+                    <div class="row justifyContentEvenly">
+                        <input type="text" name="username" required autocomplete="off" maxlength="15">
+                    </div>
+                </div>
+                <div class="col justifyContentEvenly">
+                    <div class="row justifyContentEvenly">
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="justifyContentEvenly">
+                        <input type="password" name="password" required autocomplete="off" maxlength="50">
+                    </div>
+                </div>
+            </div>
+            <div class="centerContent">
+                <button type="submit" value="Log In">Log In</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
