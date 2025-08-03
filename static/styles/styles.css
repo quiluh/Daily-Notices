@@ -184,6 +184,17 @@ p {
     margin-top: 5%;
     border-radius: 0.25rem;
     padding: 3%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 39vh;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    transform: translate(-50%, -50%);
+}
+.loginContainer .row {
+    gap: 2rem;
 }
 .loginContainer input[type="text"], .loginContainer input[type="password"] {
     text-align: center;
