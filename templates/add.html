@@ -7,6 +7,23 @@
     <title>Daily Notices | Add</title>
 </head>
 <body>
+    <nav>
+        <div class="row">
+            <div class="row w50">
+                <h1>Daily Notices</h1>
+            </div>
+            <div class="rowReverse w50">
+                <div class="navItems rowReverse">
+                    <a href="{{ url_for('index') }}" class="textDecorationNone">Home</a>
+                    <a href="{{ url_for('login') }}" class="textDecorationNone">Log In</a>
+                </div>
+                <div class="navItems rowReverse">
+                    <a href="{{ url_for('add') }}" class="textDecorationNone">Add</a>
+                    <a href="{{ url_for('edit') }}" class="textDecorationNone">Edit</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="noticeContainer mxAuto">
         <form method="post">
             <div class="centerContent">
