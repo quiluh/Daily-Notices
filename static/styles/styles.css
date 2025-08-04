@@ -57,19 +57,24 @@ p, h1, h2, h3 {
 }
 h1 {
     font-size: calc(1.5vh + 1.8vw);
+    color: var(--darkAccent);
 }
 nav h1 {
     font-size: calc(2vh + 2.1vw);
+    color: var(--darkAccent);
     margin: 2%;
 }
 h2 {
     font-size: calc(1.2vh + 1.5vw);
+    color: var(--darkAccent);
 }
 h3 {
     font-size: calc(0.9vh + 1.1vw);
+    color: var(--darkAccent);
 }
 p {
     font-size: calc(0.8vh + 0.9vw);
+    color: var(--darkAccent);
 }
 .w100 {
     width: 100%;
@@ -91,7 +96,7 @@ p {
 }
 .textDecorationNone {
     text-decoration: none;
-    color: var(--accent);
+    color: var(--darkAccent);
 }
 .noticeContainer {
     background-color: var(--complimentaryPrimary);
