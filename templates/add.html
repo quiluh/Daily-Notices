@@ -28,12 +28,12 @@
         <form method="post">
             <div class="centerContent">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="" autocomplete="off" maxlength="20">
+                <input type="text" id="name" name="name" value="" autocomplete="off" maxlength="20" required>
             </div>
     
             <div class="centerContent">
                 <label for="category">Category:</label>
-                <select name="category" id="category">
+                <select name="category" id="category" required>
                     <option value="Sports">Sports</option>
                     <option value="Culture">Culture</option>
                     <option value="Academics">Academics</option>
@@ -45,18 +45,18 @@
 
             <div class="centerContent">
                 <label for="info">Info:</label>
-                <textarea name="info" id="info" value="" maxlength="125"></textarea>
+                <textarea name="info" id="info" value="" maxlength="125" required></textarea>
             </div>    
             
             <div class="centerContent">
                 <div class="row justifyContentEvenly">
                     <div class="col">
                         <label for="startDate">Start Date:</label>
-                        <input type="date" id="startDate" name="startDate">
+                        <input type="date" id="startDate" name="startDate" required>
                     </div>
                     <div class="col">
                         <label for="endDate">End Date:</label>
-                        <input type="date" id="endDate" name="endDate">
+                        <input type="date" id="endDate" name="endDate" required>
                     </div>
                 </div>
             </div>
