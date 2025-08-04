@@ -91,6 +91,7 @@ p {
 }
 .textDecorationNone {
     text-decoration: none;
+    color: var(--accent);
 }
 .noticeContainer {
     background-color: var(--complimentaryPrimary);
