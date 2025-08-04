@@ -156,7 +156,7 @@ p {
     transition-duration: 300ms;
     cursor: pointer;
 }
-.noticeContainer button {
+.noticeContainer button, #submitEditsButton {
     font-size: calc(0.9vh + 1.1vw);
     padding: 3.5%;
     height: fit-content;
@@ -170,8 +170,11 @@ p {
     transition-duration: 300ms;
     cursor: pointer;
 }
-.noticeContainer button:hover,select:hover {
+.noticeContainer button:hover,select:hover,#submitEditsButton:hover {
     filter: brightness(120%);
+}
+#submitEditsButton {
+    padding: 1.5%;
 }
 .centerContent {
     display: flex;
