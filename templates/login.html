@@ -25,29 +25,36 @@
         </div>
     </nav>
     <div class="loginContainer mxAuto">
-        <form method="post">
-            <div class="row justifyContentEvenly">
-                <div class="col justifyContentEvenly">
-                    <div class="row justifyContentEvenly">
-                        <label for="username">Username:</label>
+        <div class="row justifyContentEvenly w100">
+            <form method="post">
+                <div class="row justifyContentEvenly">
+                    <div class="col justifyContentEvenly">
+                        <div class="row justifyContentEvenly">
+                            <label for="username">Username:</label>
+                        </div>
+                        <div class="row justifyContentEvenly">
+                            <input type="text" name="username" required autocomplete="off" maxlength="15">
+                        </div>
                     </div>
-                    <div class="row justifyContentEvenly">
-                        <input type="text" name="username" required autocomplete="off" maxlength="15">
+                    <div class="col justifyContentEvenly">
+                        <div class="row justifyContentEvenly">
+                            <label for="password">Password:</label>
+                        </div>
+                        <div class="justifyContentEvenly">
+                            <input type="password" name="password" required autocomplete="off" maxlength="50">
+                        </div>
                     </div>
                 </div>
-                <div class="col justifyContentEvenly">
-                    <div class="row justifyContentEvenly">
-                        <label for="password">Password:</label>
-                    </div>
-                    <div class="justifyContentEvenly">
-                        <input type="password" name="password" required autocomplete="off" maxlength="50">
-                    </div>
+                <div class="centerContent">
+                    <button type="submit" value="Log In">Log In</button>
                 </div>
-            </div>
-            <div class="centerContent">
-                <button type="submit" value="Log In">Log In</button>
-            </div>
-        </form>
+                <div class="centerContent">
+                    <button>
+                        <a href="{{ url_for('register') }}" class="textDecorationNone">Register</a>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
