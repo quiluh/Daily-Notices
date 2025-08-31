@@ -95,7 +95,7 @@ def register():
                         [request.form[i] for i in ("name","code","username","password")]
                     ) 
                     connection.commit()
-                    return redirect("/")  
+                    return redirect("/login") # MAYBE ADD SYSTEM OF VISIBILITY STATUS
                 else:
                     pass # CODE THIS LATER
         
