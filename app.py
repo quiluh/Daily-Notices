@@ -31,7 +31,7 @@ def clearFirstLaunch():
 def landing():
     return redirect("/index")
 
-@app.route("/index/<string:displayDate>")
+@app.route("/index/<string:displayDate>", defaults={"displayDate": None})
 def index(displayDate:str):
     if displayDate == "next":
         # GET TOMORROW'S DATE
@@ -150,7 +150,7 @@ def delete(noticeID:int):
     else:
         pass # CODE THIS LATER
 
-@app.route("/edit<string:displayDate>",methods=["GET","POST"])
+@app.route("/edit<string:displayDate>", defaults={"displayDate": None}, methods=["GET","POST"])
 def edit(displayDate:str):
     if "user" in session:
         if displayDate == "next":
