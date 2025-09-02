@@ -44,6 +44,18 @@ class DateBuilder(IBuilder):
     
     def getResult(self) -> datetime.datetime:
         return self._product
+    
+class Director:
+    # BUILD DIRECTOR
+
+    # CONSTRUCT DATE
+    @staticmethod
+    def constructDate(year:int,month:int,day:int) -> datetime.datetime:
+        return DateBuilder()\
+            .buildYear(year)\
+            .buildMonth(month)\
+            .buildDay(day)\
+            .getResult()
 
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
