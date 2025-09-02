@@ -1,3 +1,4 @@
+from abc import ABCMeta, abstractmethod
 import pymysql
 import datetime
 import hashlib
@@ -15,6 +16,13 @@ def create_connection():
         database="daily_notices",
         cursorclass=pymysql.cursors.DictCursor
     )
+
+class IBuilder(metaclass=ABCMeta):
+    # BUILDER INTERFACE
+    @staticmethod
+    @abstractmethod
+    def getResult():
+        pass
 
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
