@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static',filename='styles/styles.css') }}" rel="stylesheet">
-    <title>Daily Notices | Add</title>
-</head>
-<body>
-    <nav>
-        <div class="row">
-            <div class="row w50">
-                <h1>Daily Notices</h1>
-            </div>
-            <div class="rowReverse w50">
-                <div class="navItems rowReverse">
-                    <a href="{{ url_for('index') }}" class="textDecorationNone">Home</a>
-                    <a href="{{ url_for('login') }}" class="textDecorationNone">Log In</a>
-                </div>
-                <div class="navItems rowReverse">
-                    <a href="{{ url_for('add') }}" class="textDecorationNone">Add</a>
-                    <a href="{{ url_for('edit') }}" class="textDecorationNone">Edit</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends "mainTemplate.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block content %}
     <div class="noticeContainer mxAuto">
         <form method="post">
             <div class="centerContent">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" value="" autocomplete="off" maxlength="20" required>
             </div>
-    
+
             <div class="centerContent">
                 <label for="category">Category:</label>
                 <select name="category" id="category" required>
@@ -65,5 +44,4 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+{% endblock %}

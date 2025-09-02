@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static',filename='styles/styles.css') }}" rel="stylesheet">
-    <title>Daily Notices | Log In</title>
-</head>
-<body>
-    <nav>
-        <div class="row">
-            <div class="row w50">
-                <h1>Daily Notices</h1>
-            </div>
-            <div class="rowReverse w50">
-                <div class="navItems rowReverse">
-                    <a href="{{ url_for('index') }}" class="textDecorationNone">Home</a>
-                    <a href="{{ url_for('login') }}" class="textDecorationNone">Log In</a>
-                </div>
-                <div class="navItems rowReverse">
-                    <a href="{{ url_for('add') }}" class="textDecorationNone">Add</a>
-                    <a href="{{ url_for('edit') }}" class="textDecorationNone">Edit</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends "mainTemplate.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
     <div class="loginContainer mxAuto">
         <div class="row justifyContentEvenly w100">
             <form method="post">
@@ -56,5 +35,4 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
