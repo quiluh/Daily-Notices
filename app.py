@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from typing import Union
 import pymysql
 import datetime
 import hashlib
@@ -23,6 +24,26 @@ class IBuilder(metaclass=ABCMeta):
     @abstractmethod
     def getResult():
         pass
+
+class DateBuilder(IBuilder):
+    # CONSTRUCTS DATE
+    def __init__(self):
+        self._product = datetime.datetime()
+    
+    def buildYear(self,inputYear:int) -> 'DateBuilder':
+        self._product.year = inputYear
+        return self
+    
+    def buildMonth(self,inputMonth:int) -> 'DateBuilder':
+        self._product.month = inputMonth
+        return self
+    
+    def buildDay(self,inputDay:int) -> 'DateBuilder':
+        self._product.day = inputDay
+        return self
+    
+    def getResult(self) -> datetime.datetime:
+        return self._product
 
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
