@@ -72,7 +72,7 @@ def login():
                 user = cursor.fetchone()
         
         # CHECK IF USER EXISTS AND PASSWORD IS VALID, SET SESSION USER TO THE VALID USERNAME
-        if user and user["password"] == password:
+        if user and user["password"] == hash(password):
             session["user"] = user["username"]
             return redirect("/")
         else:
@@ -85,7 +85,7 @@ def logout():
     session.pop("user", None)
     return redirect("/login")
     
-@app.route("/register",methods=["GET","POST"]) # STORE USERNAME APPENDED TO PASSWORD FOR EXTRA SECURITY
+@app.route("/register",methods=["GET","POST"])
 def register():
     if request.method == "POST":
         with create_connection() as connection:
@@ -96,7 +96,7 @@ def register():
                 if user is None:
                     cursor.execute(
                         "INSERT INTO teachers (name,code,username,password) VALUES (%s,%s,%s,%s)",
-                        [request.form[i] for i in ("name","code","username","password")]
+                        [request.form[i] if i != "password" else hash(request.form[i]) for i in ("name","code","username","password")] # LOOP THROUGH FORM AND PASS EACH FIELD AS A PARAMETER, ENCRYPTING PASSWORD
                     ) 
                     connection.commit()
                     return redirect("/login") # MAYBE ADD SYSTEM OF VISIBILITY STATUS
