@@ -31,10 +31,17 @@ def clearFirstLaunch():
 def landing():
     return redirect("/index")
 
-@app.route("/index")
-def index():
-    # GET CURRENT DATE
-    currentDate = datetime.datetime.now()
+@app.route("/index/<string:displayDate>")
+def index(displayDate:str):
+    if displayDate == "next":
+        # GET TOMORROW'S DATE
+        targetDate = datetime.datetime.now() + datetime.timedelta(days=1)
+    elif displayDate == "previous":
+        # GET YESTERDAY'S DATE
+        targetDate = datetime.datetime.now() - datetime.timedelta(days=1)
+    else:
+        # GET CURRENT DATE
+        targetDate = datetime.datetime.now()
     
     # GET ALL NOTICES RELEVANT TO THE DATE
     with create_connection() as connection:
@@ -52,7 +59,7 @@ def index():
                     FROM dailynotices JOIN teachers ON dailynotices.teacherInChargeID = teachers.id
                     WHERE startDate <= %s AND endDate >= %s
                 """,
-                (currentDate,currentDate)
+                (targetDate,targetDate)
             )
             notices = cursor.fetchall()
     
@@ -143,17 +150,24 @@ def delete(noticeID:int):
     else:
         pass # CODE THIS LATER
 
-@app.route("/edit",methods=["GET","POST"])
-def edit():
+@app.route("/edit<string:displayDate>",methods=["GET","POST"])
+def edit(displayDate:str):
     if "user" in session:
-        # GET CURRENT DATE
-        currentDate = datetime.datetime.now()
+        if displayDate == "next":
+            # GET TOMORROW'S DATE
+            targetDate = datetime.datetime.now() + datetime.timedelta(days=1)
+        elif displayDate == "previous":
+            # GET YESTERDAY'S DATE
+            targetDate = datetime.datetime.now() - datetime.timedelta(days=1)
+        else:
+            # GET CURRENT DATE
+            targetDate = datetime.datetime.now()
 
         if request.method == "GET":
             # GET ALL NOTICES RELEVANT TO THE DATE
             with create_connection() as connection:
                  with connection.cursor() as cursor:
-                      cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(currentDate,currentDate))
+                      cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(targetDate,targetDate))
                       notices = cursor.fetchall()
             
             return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)],userInSession="user" in session)
