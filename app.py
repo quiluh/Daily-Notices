@@ -18,45 +18,6 @@ def create_connection():
         cursorclass=pymysql.cursors.DictCursor
     )
 
-class IBuilder(metaclass=ABCMeta):
-    # BUILDER INTERFACE
-    @staticmethod
-    @abstractmethod
-    def getResult():
-        pass
-
-class DateBuilder(IBuilder):
-    # CONSTRUCTS DATE
-    def __init__(self):
-        self._product = datetime.datetime()
-    
-    def buildYear(self,inputYear:int) -> 'DateBuilder':
-        self._product.year = inputYear
-        return self
-    
-    def buildMonth(self,inputMonth:int) -> 'DateBuilder':
-        self._product.month = inputMonth
-        return self
-    
-    def buildDay(self,inputDay:int) -> 'DateBuilder':
-        self._product.day = inputDay
-        return self
-    
-    def getResult(self) -> datetime.datetime:
-        return self._product
-    
-class Director:
-    # BUILD DIRECTOR
-
-    # CONSTRUCT DATE
-    @staticmethod
-    def constructDate(year:int,month:int,day:int) -> datetime.datetime:
-        return DateBuilder()\
-            .buildYear(year)\
-            .buildMonth(month)\
-            .buildDay(day)\
-            .getResult()
-
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
 
