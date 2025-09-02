@@ -1,5 +1,6 @@
 import pymysql
 import datetime
+import hashlib
 from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
@@ -14,6 +15,9 @@ def create_connection():
         database="daily_notices",
         cursorclass=pymysql.cursors.DictCursor
     )
+
+def hash(hashInput) -> str:
+    return hashlib.sha256(hashInput.encode()).hexdigest()
 
 @app.before_request
 def clearFirstLaunch():
