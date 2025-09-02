@@ -50,7 +50,7 @@ def index():
             )
             notices = cursor.fetchall()
     
-    return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)])
+    return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)],userInSession="user" in session)
 
 @app.route("/login",methods=["GET","POST"])
 def login():
@@ -74,7 +74,7 @@ def login():
         else:
             pass # CODE THIS LATER
     elif request.method == "GET":
-        return render_template("login.html")
+        return render_template("login.html",userInSession="user" in session)
     
 @app.route("/logout")
 def logout():
@@ -100,13 +100,13 @@ def register():
                     pass # CODE THIS LATER
         
     elif request.method == "GET":
-        return render_template("register.html")
+        return render_template("register.html",userInSession="user" in session)
     
 @app.route("/add",methods=["GET","POST"])
 def add():
     if "user" in session:
         if request.method == "GET":
-            return render_template("add.html")
+            return render_template("add.html",userInSession="user" in session)
         elif request.method == "POST":
             with create_connection() as connection:
                 with connection.cursor() as cursor:
@@ -150,7 +150,7 @@ def edit():
                       cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(currentDate,currentDate))
                       notices = cursor.fetchall()
             
-            return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)])
+            return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)],userInSession="user" in session)
             
         elif request.method == "POST":
             # LOOP THROUGH ALL FIELDS IN FORM
