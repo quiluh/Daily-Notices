@@ -39,7 +39,7 @@ def landing():
     return redirect("/index/")
 
 @app.route("/index/", defaults={"dateIndex": 0}) # ALLOW FOR NO PARAMETERS TO BE PASSED
-@app.route("/index/<signedinteger:dateIndex>")
+@app.route("/index/<signedinteger:dateIndex>") # TAKE A DATE INDEX AS A PARAMETER TO KEEP TRACK OF CURRENT DISPLAY DATE
 def index(dateIndex:int=0):
 
     # FIND DESIRED DATE USING A DATE COUNTER
@@ -158,7 +158,7 @@ def delete(noticeID:int):
         pass # CODE THIS LATER
 
 @app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"]) # ALLOW FOR NO PARAMETERS TO BE PASSED
-@app.route("/edit/<signedinteger:dateIndex>", methods=["GET","POST"])
+@app.route("/edit/<signedinteger:dateIndex>", methods=["GET","POST"]) # TAKE A DATE INDEX AS A PARAMETER TO KEEP TRACK OF CURRENT DISPLAY DATE
 def edit(dateIndex:int=0):
     if "user" in session:
 
