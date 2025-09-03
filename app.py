@@ -63,7 +63,7 @@ def index(displayDate:str):
             )
             notices = cursor.fetchall()
     
-    return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)],userInSession="user" in session)
+    return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)],userInSession="user" in session,targetDate=targetDate)
 
 @app.route("/login",methods=["GET","POST"])
 def login():
@@ -170,7 +170,7 @@ def edit(displayDate:str):
                       cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(targetDate,targetDate))
                       notices = cursor.fetchall()
             
-            return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)],userInSession="user" in session)
+            return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)],userInSession="user" in session,targetDate=targetDate)
             
         elif request.method == "POST":
             # LOOP THROUGH ALL FIELDS IN FORM
