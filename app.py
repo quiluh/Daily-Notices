@@ -158,7 +158,7 @@ def delete(noticeID:int):
         pass # CODE THIS LATER
 
 @app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"]) # ALLOW FOR NO PARAMETERS TO BE PASSED
-@app.route("/edit<signedinteger:dateIndex>", methods=["GET","POST"])
+@app.route("/edit/<signedinteger:dateIndex>", methods=["GET","POST"])
 def edit(dateIndex:int=0):
     if "user" in session:
 
