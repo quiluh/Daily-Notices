@@ -1,8 +1,9 @@
 from abc import ABCMeta, abstractmethod
-from typing import Union
+from typing import Any, Union
 import pymysql
 import datetime
 import hashlib
+from werkzeug.routing import BaseConverter
 from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
@@ -21,20 +22,24 @@ def create_connection():
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
 
-@app.before_request
-def clearFirstLaunch():
-    if not session.get("initialized"):
-        session.clear()
-        session["initialized"] = True
+class SignedIntConverter(BaseConverter):
+    regex = r'-?\d+' # REGEX TO ACCOMODATE NEGATIVE AND POSITIVE INTEGERS
+
+    def to_python(self, value: str) -> int:
+        return int(value)
+    
+    def to_url(self, value: int) -> str:
+        return str(value)
 
 @app.route("/")
 def landing():
     return redirect("/index/")
 
-@app.route("/index/", defaults={"dateIndex": 0})
+@app.route("/index/", defaults={"dateIndex": 0}) # ALLOW FOR NO PARAMETERS TO BE PASSED
 @app.route("/index/<int:dateIndex>")
 def index(dateIndex:int=0):
 
+    # FIND DESIRED DATE USING A DATE COUNTER
     targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
     
     # GET ALL NOTICES RELEVANT TO THE DATE
@@ -149,10 +154,12 @@ def delete(noticeID:int):
     else:
         pass # CODE THIS LATER
 
-@app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"])
+@app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"]) # ALLOW FOR NO PARAMETERS TO BE PASSED
 @app.route("/edit<int:dateIndex>", methods=["GET","POST"])
 def edit(dateIndex:int=0):
     if "user" in session:
+
+        # FIND DESIRED DATE USING DATE COUNTER
         targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
 
         if request.method == "GET":
