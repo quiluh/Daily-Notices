@@ -3,21 +3,27 @@
 {% block title %}Index{% endblock %}
 
 {% block content %}
-<div class="centerContent">
-    <a href="{{ url_for('index',dateIndex=dateIndex-1) }}" class="textDecorationNone changeDateButton">&lt;</a>
-    <h1>{{ targetDate.day }}/{{ targetDate.month }}/{{ targetDate.year }}</h1>
-    <a href="{{ url_for('index',dateIndex=dateIndex+1) }}" class="textDecorationNone changeDateButton">&gt;</a>
-</div>
-    {% for row in notices %}
-        <div class="row justifyContentEvenly">
-            {% for notice in row %}
-                <div class="noticeContainer">
-                    <h1>{{ notice["name"] }}</h1>
-                    <h2>{{ notice["category"] }}</h2>
-                    <p>{{ notice["information"] }}</p>
-                    <h3>{{ notice["teacherCode"] }}</h3>
-                </div>
-            {% endfor %}
+    <div class="centerContent">
+        <a href="{{ url_for('index',dateIndex=dateIndex-1) }}" class="textDecorationNone changeDateButton">&lt;</a>
+        <h1>{{ targetDate.day }}/{{ targetDate.month }}/{{ targetDate.year }}</h1>
+        <a href="{{ url_for('index',dateIndex=dateIndex+1) }}" class="textDecorationNone changeDateButton">&gt;</a>
+    </div>
+    {% if notices %}
+        {% for row in notices %}
+            <div class="row justifyContentEvenly">
+                {% for notice in row %}
+                    <div class="noticeContainer">
+                        <h1>{{ notice["name"] }}</h1>
+                        <h2>{{ notice["category"] }}</h2>
+                        <p>{{ notice["information"] }}</p>
+                        <h3>{{ notice["teacherCode"] }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="textCenter">
+            <h1>No notices available for this date!</h1>
         </div>
-    {% endfor %}
+    {% endif %}
 {% endblock %}
