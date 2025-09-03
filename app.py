@@ -30,7 +30,7 @@ class SignedIntConverter(BaseConverter):
 
 app.url_map.converters["signedinteger"] = SignedIntConverter
 
-
+# HASH FUNCTION, TURNS PLAINTEXT INTO A 64 CHARACTER LONG CYPHERTEXT
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
 
