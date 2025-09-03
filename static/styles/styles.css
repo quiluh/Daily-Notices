@@ -260,3 +260,6 @@ p {
 .changeDateButton:hover {
     filter: brightness(105%);
 }
+.textCenter {
+    text-align: center;
+}
