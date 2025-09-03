@@ -18,45 +18,6 @@ def create_connection():
         cursorclass=pymysql.cursors.DictCursor
     )
 
-class IBuilder(metaclass=ABCMeta):
-    # BUILDER INTERFACE
-    @staticmethod
-    @abstractmethod
-    def getResult():
-        pass
-
-class DateBuilder(IBuilder):
-    # CONSTRUCTS DATE
-    def __init__(self):
-        self._product = datetime.datetime()
-
-    def buildYear(self,inputYear:int) -> 'DateBuilder':
-        self._product.year = inputYear
-        return self
-
-    def buildMonth(self,inputMonth:int) -> 'DateBuilder':
-        self._product.month = inputMonth
-        return self
-
-    def buildDay(self,inputDay:int) -> 'DateBuilder':
-        self._product.day = inputDay
-        return self
-
-    def getResult(self) -> datetime.datetime:
-        return self._product
-    
-class Director:
-    # BUILD DIRECTOR
-
-    # CONSTRUCT DATE
-    @staticmethod
-    def constructDate(year:int,month:int,day:int) -> datetime.datetime:
-        return DateBuilder()\
-            .buildYear(year)\
-            .buildMonth(month)\
-            .buildDay(day)\
-            .getResult()
-
 def hash(hashInput) -> str:
     return hashlib.sha256(hashInput.encode()).hexdigest()
 
@@ -70,18 +31,11 @@ def clearFirstLaunch():
 def landing():
     return redirect("/index/")
 
-@app.route("/index/", defaults={"displayDate": None})
-@app.route("/index/<string:displayDate>")
-def index(displayDate:str=None):
-    if displayDate == "next":
-        # GET TOMORROW'S DATE
-        targetDate = datetime.datetime.now() + datetime.timedelta(days=1)
-    elif displayDate == "previous":
-        # GET YESTERDAY'S DATE
-        targetDate = datetime.datetime.now() - datetime.timedelta(days=1)
-    else:
-        # GET CURRENT DATE
-        targetDate = datetime.datetime.now()
+@app.route("/index/", defaults={"dateIndex": 0})
+@app.route("/index/<int:dateIndex>")
+def index(dateIndex:int=0):
+
+    targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
     
     # GET ALL NOTICES RELEVANT TO THE DATE
     with create_connection() as connection:
@@ -103,7 +57,12 @@ def index(displayDate:str=None):
             )
             notices = cursor.fetchall()
     
-    return render_template("index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)],userInSession="user" in session,targetDate=targetDate)
+    return render_template(
+        "index.html",notices=[notices[i:i+3] for i in range(0,len(notices),3)],
+        userInSession="user" in session,
+        targetDate=targetDate,
+        dateIndex=dateIndex
+    )
 
 @app.route("/login",methods=["GET","POST"])
 def login():
@@ -190,19 +149,11 @@ def delete(noticeID:int):
     else:
         pass # CODE THIS LATER
 
-@app.route("/edit/", defaults={"displayDate": None}, methods=["GET","POST"])
-@app.route("/edit<string:displayDate>", methods=["GET","POST"])
-def edit(currentDisplayDate:str=None,displayDate:str=None):
+@app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"])
+@app.route("/edit<int:dateIndex>", methods=["GET","POST"])
+def edit(dateIndex:int=0):
     if "user" in session:
-        if displayDate == "next":
-            # GET TOMORROW'S DATE
-            targetDate = datetime.datetime.now() + datetime.timedelta(days=1)
-        elif displayDate == "previous":
-            # GET YESTERDAY'S DATE
-            targetDate = datetime.datetime.now() - datetime.timedelta(days=1)
-        else:
-            # GET CURRENT DATE
-            targetDate = datetime.datetime.now()
+        targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
 
         if request.method == "GET":
             # GET ALL NOTICES RELEVANT TO THE DATE
@@ -211,7 +162,12 @@ def edit(currentDisplayDate:str=None,displayDate:str=None):
                       cursor.execute("SELECT * FROM dailynotices WHERE startDate <= %s AND endDate >= %s",(targetDate,targetDate))
                       notices = cursor.fetchall()
             
-            return render_template("edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)],userInSession="user" in session,targetDate=targetDate)
+            return render_template(
+                "edit.html",notices=[notices[i:i+2] for i in range(0,len(notices),2)],
+                userInSession="user" in session,
+                targetDate=targetDate,
+                dateIndex=dateIndex
+            )
             
         elif request.method == "POST":
             # LOOP THROUGH ALL FIELDS IN FORM
