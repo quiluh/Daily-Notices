@@ -247,3 +247,16 @@ p {
 .loginContainer button:hover {
     filter: brightness(120%);
 }
+.changeDateButton {
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-align: center;
+    border-radius: 0.25rem;
+    margin: 2%;
+    background-color: var(--complimentaryPrimary);
+    transition-duration: 300ms;
+}
+.changeDateButton:hover {
+    filter: brightness(105%);
+}

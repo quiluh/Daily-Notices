@@ -4,9 +4,9 @@
 
 {% block content %}
     <div class="centerContent">
-        <a href="{{ url_for('edit',dateIndex=dateIndex-1) }}">&lt;</a>
+        <a href="{{ url_for('edit',dateIndex=dateIndex-1) }}" class="textDecorationNone changeDateButton">&lt;</a>
         <h1>{{ targetDate.day }}/{{ targetDate.month }}/{{ targetDate.year }}</h1>
-        <a href="{{ url_for('edit',dateIndex=dateIndex+1) }}">&gt;</a>
+        <a href="{{ url_for('edit',dateIndex=dateIndex+1) }}" class="textDecorationNone changeDateButton">&gt;</a>
     </div>
     <form method="post">
         <div class="centerContent">
