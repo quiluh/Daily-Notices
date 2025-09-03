@@ -19,9 +19,6 @@ def create_connection():
         cursorclass=pymysql.cursors.DictCursor
     )
 
-def hash(hashInput) -> str:
-    return hashlib.sha256(hashInput.encode()).hexdigest()
-
 class SignedIntConverter(BaseConverter):
     regex = r'-?\d+' # REGEX TO ACCOMODATE NEGATIVE AND POSITIVE INTEGERS
 
@@ -31,12 +28,18 @@ class SignedIntConverter(BaseConverter):
     def to_url(self, value: int) -> str:
         return str(value)
 
+app.url_map.converters["signedinteger"] = SignedIntConverter
+
+
+def hash(hashInput) -> str:
+    return hashlib.sha256(hashInput.encode()).hexdigest()
+
 @app.route("/")
 def landing():
     return redirect("/index/")
 
 @app.route("/index/", defaults={"dateIndex": 0}) # ALLOW FOR NO PARAMETERS TO BE PASSED
-@app.route("/index/<int:dateIndex>")
+@app.route("/index/<signedinteger:dateIndex>")
 def index(dateIndex:int=0):
 
     # FIND DESIRED DATE USING A DATE COUNTER
@@ -155,7 +158,7 @@ def delete(noticeID:int):
         pass # CODE THIS LATER
 
 @app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"]) # ALLOW FOR NO PARAMETERS TO BE PASSED
-@app.route("/edit<int:dateIndex>", methods=["GET","POST"])
+@app.route("/edit<signedinteger:dateIndex>", methods=["GET","POST"])
 def edit(dateIndex:int=0):
     if "user" in session:
 
