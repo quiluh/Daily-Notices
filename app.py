@@ -29,10 +29,11 @@ def clearFirstLaunch():
 
 @app.route("/")
 def landing():
-    return redirect("/index")
+    return redirect("/index/")
 
-@app.route("/index/<string:displayDate>", defaults={"displayDate": None})
-def index(displayDate:str):
+@app.route("/index/", defaults={"displayDate": None})
+@app.route("/index/<string:displayDate>")
+def index(displayDate:str=None):
     if displayDate == "next":
         # GET TOMORROW'S DATE
         targetDate = datetime.datetime.now() + datetime.timedelta(days=1)
@@ -150,8 +151,9 @@ def delete(noticeID:int):
     else:
         pass # CODE THIS LATER
 
-@app.route("/edit<string:displayDate>", defaults={"displayDate": None}, methods=["GET","POST"])
-def edit(displayDate:str):
+@app.route("/edit/", defaults={"displayDate": None}, methods=["GET","POST"])
+@app.route("/edit<string:displayDate>", methods=["GET","POST"])
+def edit(displayDate:str=None):
     if "user" in session:
         if displayDate == "next":
             # GET TOMORROW'S DATE
