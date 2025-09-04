@@ -30,6 +30,13 @@
             </div>
         </div>
     </nav>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="centerContent">
+                <h1>{{ messages[0] }}</h1>
+            </div>
+        {% endif %}
+    {% endwith %}
     {% block content %}{% endblock %}
 </body>
 </html>

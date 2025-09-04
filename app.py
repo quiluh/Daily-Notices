@@ -4,7 +4,7 @@ import pymysql
 import datetime
 import hashlib
 from werkzeug.routing import BaseConverter
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, flash, render_template, request, redirect, session, url_for
 
 app = Flask(__name__)
 app.secret_key = "myLittleSodaPop67"
@@ -92,7 +92,8 @@ def login():
             session["user"] = user["username"]
             return redirect("/")
         else:
-            pass # CODE THIS LATER
+            flash("Invalid username or password!")
+            return redirect(url_for("login"))
     elif request.method == "GET":
         return render_template("login.html",userInSession="user" in session)
     
@@ -117,7 +118,8 @@ def register():
                     connection.commit()
                     return redirect("/login") # MAYBE ADD SYSTEM OF VISIBILITY STATUS
                 else:
-                    pass # CODE THIS LATER
+                    flash("Username already in use!")
+                    return redirect(url_for("register"))
         
     elif request.method == "GET":
         return render_template("register.html",userInSession="user" in session)
@@ -143,7 +145,8 @@ def add():
 
                     return redirect("/")
     else:
-        pass # CODE THIS LATER
+        flash("You aren't logged in!")
+        return redirect(url_for("index"))
 
 @app.route("/delete/<int:noticeID>",methods=["GET","POST"])
 def delete(noticeID:int):
@@ -155,7 +158,8 @@ def delete(noticeID:int):
                 connection.commit()
         return redirect("/edit")
     else:
-        pass # CODE THIS LATER
+        flash("You aren't logged in!")
+        return redirect(url_for("index"))
 
 @app.route("/edit/", defaults={"dateIndex": 0}, methods=["GET","POST"]) # ALLOW FOR NO PARAMETERS TO BE PASSED
 @app.route("/edit/<signedinteger:dateIndex>", methods=["GET","POST"]) # TAKE A DATE INDEX AS A PARAMETER TO KEEP TRACK OF CURRENT DISPLAY DATE
@@ -196,7 +200,8 @@ def edit(dateIndex:int=0):
                             connection.commit()
             return redirect("/")
     else:
-        pass # CODE THIS LATER
+        flash("You aren't logged in!")
+        return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run()
