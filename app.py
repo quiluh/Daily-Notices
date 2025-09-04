@@ -92,6 +92,7 @@ def login():
             session["user"] = user["username"]
             return redirect("/")
         else:
+            # FLASH ERROR
             flash("Invalid username or password!")
             return redirect(url_for("login"))
     elif request.method == "GET":
@@ -118,6 +119,7 @@ def register():
                     connection.commit()
                     return redirect("/login") # MAYBE ADD SYSTEM OF VISIBILITY STATUS
                 else:
+                    # FLASH ERROR
                     flash("Username already in use!")
                     return redirect(url_for("register"))
         
@@ -145,6 +147,7 @@ def add():
 
                     return redirect("/")
     else:
+        # FLASH ERROR
         flash("You aren't logged in!")
         return redirect(url_for("index"))
 
@@ -158,6 +161,7 @@ def delete(noticeID:int):
                 connection.commit()
         return redirect("/edit")
     else:
+        # FLASH ERROR
         flash("You aren't logged in!")
         return redirect(url_for("index"))
 
@@ -200,6 +204,7 @@ def edit(dateIndex:int=0):
                             connection.commit()
             return redirect("/")
     else:
+        # FLASH ERROR
         flash("You aren't logged in!")
         return redirect(url_for("index"))
 
