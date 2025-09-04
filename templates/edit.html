@@ -36,28 +36,29 @@
                                     <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
                                 </div>
                                 <div class="row justifyContentEvenly">
-                                        <div class="col">
-                                            <div class="row justifyContentEvenly">
-                                                <label for="startDate">Start Date:</label>
-                                            </div>
-                                            <div class="row justifyContentEvenly">
-                                                <input type="date" id="startDate_{{ notice['id'] }}" name="startDate_{{ notice['id'] }}" value="{{ notice['startDate'] }}">
-                                            </div>
+                                    <div class="col">
+                                        <div class="row justifyContentEvenly">
+                                            <label for="startDate">Start Date:</label>
                                         </div>
-                                        <div class="col">
-                                            <div class="row justifyContentEvenly">
-                                                <label for="endDate">End Date:</label>
-                                            </div>
-                                            <div class="row justifyContentEvenly">
-                                                <input type="date" id="endDate_{{ notice['id'] }}" name="endDate_{{ notice['id'] }}" value="{{ notice['endDate'] }}">
-                                            </div>
+                                        <div class="row justifyContentEvenly">
+                                            <input type="date" id="startDate_{{ notice['id'] }}" name="startDate_{{ notice['id'] }}" value="{{ notice['startDate'] }}">
                                         </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row justifyContentEvenly">
+                                            <label for="endDate">End Date:</label>
+                                        </div>
+                                        <div class="row justifyContentEvenly">
+                                            <input type="date" id="endDate_{{ notice['id'] }}" name="endDate_{{ notice['id'] }}" value="{{ notice['endDate'] }}">
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                             <form action="{{ url_for('delete', noticeID=notice['id']) }}" class="paddingTop2">
                                 <div class="centerContent">
                                     <button type="submit">Delete</button>
                                 </div>
+                            </form>
                         </div>
                     {% endfor %}
                 </div>
