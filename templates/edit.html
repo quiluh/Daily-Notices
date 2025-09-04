@@ -35,17 +35,23 @@
                                 <div class="centerContent">
                                     <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
                                 </div>
-                                <div class="centerContent">
-                                    <div class="row">
+                                <div class="row justifyContentEvenly">
                                         <div class="col">
-                                            <label for="startDate">Start Date:</label>
-                                            <input type="date" id="startDate_{{ notice['id'] }}" name="startDate_{{ notice['id'] }}" value="{{ notice['startDate'] }}">
+                                            <div class="row justifyContentEvenly">
+                                                <label for="startDate">Start Date:</label>
+                                            </div>
+                                            <div class="row justifyContentEvenly">
+                                                <input type="date" id="startDate_{{ notice['id'] }}" name="startDate_{{ notice['id'] }}" value="{{ notice['startDate'] }}">
+                                            </div>
                                         </div>
                                         <div class="col">
-                                            <label for="endDate">End Date:</label>
-                                            <input type="date" id="endDate_{{ notice['id'] }}" name="endDate_{{ notice['id'] }}" value="{{ notice['endDate'] }}">
+                                            <div class="row justifyContentEvenly">
+                                                <label for="endDate">End Date:</label>
+                                            </div>
+                                            <div class="row justifyContentEvenly">
+                                                <input type="date" id="endDate_{{ notice['id'] }}" name="endDate_{{ notice['id'] }}" value="{{ notice['endDate'] }}">
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
                             </form>
                             <form action="{{ url_for('delete', noticeID=notice['id']) }}">
