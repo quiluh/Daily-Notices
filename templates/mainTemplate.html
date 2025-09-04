@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ url_for('static',filename='styles/styles.css') }}" rel="stylesheet">
-    <title>Daily Notices | {% block title %}{% endblock %}</title>
+    {% if title != "" %}
+        <title>Daily Notices | {{ title }}</title>
+    {% else %}
+        <title>Daily Notices</title>
+    {% endif %}
 </head>
 <body>
     <nav>
         <div class="row">
             <div class="row w50">
-                <h1>Daily Notices</h1>
+                {% if title != "" %}
+                    <h1>Daily Notices | {{ title }}</h1>
+                {% else %}
+                    <h1>Daily Notices</h1>
+                {% endif %}
             </div>
             <div class="rowReverse w50">
                 <div class="navItems rowReverse">
