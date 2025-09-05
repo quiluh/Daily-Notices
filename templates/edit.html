@@ -20,7 +20,7 @@
                                 <input type="hidden" name="id_{{ notice['id'] }}" value="{{ notice['id'] }}">
             
                                 <div class="centerContent">
-                                    <input type="text" id="name_{{ notice['id'] }}" name="name_{{ notice['id'] }}" value="{{ notice['name'] }}">
+                                    <input type="text" id="name_{{ notice['id'] }}" name="name_{{ notice['id'] }}" value="{{ notice['name'] }}" maxlength="20">
                                 </div>
                                 <div class="centerContent">
                                     <select name="category_{{ notice['id'] }}" id="category_{{ notice['id'] }}">
@@ -33,7 +33,7 @@
                                     </select>
                                 </div>
                                 <div class="centerContent">
-                                    <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}">{{ notice['information'] }}</textarea>
+                                    <textarea name="info_{{ notice['id'] }}" id="info_{{ notice['id'] }}" maxlength="125">{{ notice['information'] }}</textarea>
                                 </div>
                                 <div class="row justifyContentEvenly">
                                     <div class="col">
