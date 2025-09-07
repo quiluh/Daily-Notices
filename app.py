@@ -42,8 +42,13 @@ def landing():
 @app.route("/index/<signedinteger:dateIndex>") # TAKE A DATE INDEX AS A PARAMETER TO KEEP TRACK OF CURRENT DISPLAY DATE
 def index(dateIndex:int=0):
 
-    # FIND DESIRED DATE USING A DATE COUNTER
-    targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
+    try:
+        # FIND DESIRED DATE USING A DATE COUNTER
+        targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
+    except OverflowError:
+        # FLASH ERROR
+        flash("Date out of range!")
+        return redirect(url_for("index"))
     
     # GET ALL NOTICES RELEVANT TO THE DATE
     with create_connection() as connection:
@@ -170,8 +175,13 @@ def delete(noticeID:int):
 def edit(dateIndex:int=0):
     if "user" in session:
 
-        # FIND DESIRED DATE USING DATE COUNTER
-        targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
+        try:
+            # FIND DESIRED DATE USING A DATE COUNTER
+            targetDate = datetime.datetime.now() + datetime.timedelta(days=dateIndex)
+        except OverflowError:
+            # FLASH ERROR
+            flash("Date out of range!")
+            return redirect(url_for("index"))
 
         if request.method == "GET":
             # GET ALL NOTICES RELEVANT TO THE DATE
