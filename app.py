@@ -82,7 +82,7 @@ def login():
 
     if request.method == "POST":
         # GRAB INPUTTED USERNAME AND PASSWORD
-        username = request.form["username"]
+        username = request.form["username"].lower().replace(" ","")
         password = request.form["password"]
 
         # ESTABLISH CONNECTION WITH DATABASE
