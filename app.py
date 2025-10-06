@@ -119,7 +119,7 @@ def register():
                 if user is None:
                     cursor.execute(
                         "INSERT INTO teachers (name,code,username,password) VALUES (%s,%s,%s,%s)",
-                        [request.form[i] if i != "password" else hash(request.form[i]) for i in ("name","code","username","password")] # LOOP THROUGH FORM AND PASS EACH FIELD AS A PARAMETER, ENCRYPTING PASSWORD
+                        [request.form[i] if i != "password" else request.form[i].upper() if i == "code" else hash(request.form[i]) for i in ("name","code","username","password")] # LOOP THROUGH FORM AND PASS EACH FIELD AS A PARAMETER, ENCRYPTING PASSWORD
                     ) 
                     connection.commit()
                     return redirect("/login") # MAYBE ADD SYSTEM OF VISIBILITY STATUS
