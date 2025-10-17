@@ -230,7 +230,7 @@ p {
     outline: none;
     filter: brightness(110%);
 }
-.loginContainer button {
+.loginContainer button, .loginContainer .button {
     font-size: calc(0.9vh + 1.1vw);
     padding: 2.5%;
     height: fit-content;
@@ -244,7 +244,7 @@ p {
     transition-duration: 300ms;
     cursor: pointer;
 }
-.loginContainer button:hover {
+.loginContainer button:hover, .loginContainer .button:hover {
     filter: brightness(120%);
 }
 .changeDateButton {
